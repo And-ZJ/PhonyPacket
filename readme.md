@@ -6,7 +6,7 @@
 
 需 Linux 下 libnet 库
 
-安装该库 apt-get libnet-dev
+安装该库 apt-get install libnet-dev
 
 编译时，需配置链接参数 -lnet 。（显然，在 Windows 下配置该参数将无法编译）
 
@@ -25,7 +25,7 @@
 
 参见 main.cpp 中的示例。
 
-直接编译示例并运行后，抓包得到的结果如下： 
+直接编译示例并运行后（编译测试环境：Ubuntu 18.04，GCC 7.4.0），抓包得到的结果如下： 
 
 ![WiresharkCaptureImage.png](WiresharkCaptureImage.png)
 
