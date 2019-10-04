@@ -1,0 +1,117 @@
+# depslib dependency file v1.0
+1569828294 source:e:\code\c\phonypacket\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Tools.h"
+	"Test.h"
+
+1569824596 source:e:\code\c\phonypacket\packetinfo.cpp
+	"PacketInfo.h"
+
+1569827360 e:\code\c\phonypacket\packetinfo.h
+
+1569827542 source:e:\code\c\phonypacket\test.cpp
+	"Test.h"
+	"Tools.h"
+
+1569828573 e:\code\c\phonypacket\test.h
+	<malloc.h>
+	<assert.h>
+
+1569828571 e:\code\c\phonypacket\tools.h
+	<assert.h>
+	<malloc.h>
+
+1569828898 source:e:\code\c\phonypacket\tools.c
+	"Tools.h"
+
+1569824596 source:e:\code\c\phonypacket\packetinfo.c
+	"PacketInfo.h"
+
+1569829000 source:e:\code\c\phonypacket\test.c
+	"Tools.h"
+	"Test.h"
+
+1570173037 source:e:\code\c++\phonypacket\main.cpp
+	<stdio.h>
+	<stdlib.h>
+	"BytesTools.h"
+	"NetworkTools.h"
+	"SendPacket.h"
+	"Test.h"
+
+1570001885 e:\code\c++\phonypacket\tools.h
+	<assert.h>
+	<malloc.h>
+	<stdio.h>
+	"Tools.h"
+
+1570114445 e:\code\c++\phonypacket\test.h
+	<malloc.h>
+	<assert.h>
+	"BytesTools.h"
+	"AssertTools.h"
+	"PlatformTools.h"
+	"NetworkTools.h"
+	"PacketInfo.h"
+
+1570173511 source:e:\code\c++\phonypacket\test.cpp
+	"Test.h"
+
+1570173842 source:e:\code\c++\phonypacket\packetinfo.cpp
+	"PacketInfo.h"
+
+1570173942 e:\code\c++\phonypacket\packetinfo.h
+	"SystemDefine.h"
+	"malloc.h"
+	"BytesTools.h"
+	"NetworkTools.h"
+
+1570169824 e:\code\c++\phonypacket\systemdefine.h
+	<net/ethernet.h>
+	<linux/ip.h>
+	<linux/tcp.h>
+
+1570001893 source:e:\code\c++\phonypacket\tools.cpp
+	"Tools.h"
+
+1570002033 source:e:\code\c++\phonypacket\untitled1.c
+	"Untitled.h"
+
+1570002018 e:\code\c++\phonypacket\untitled.h
+	<stdio.h>
+
+1570114170 source:e:\code\c++\phonypacket\bytestools.c
+	"BytesTools.h"
+
+1570114547 e:\code\c++\phonypacket\bytestools.h
+	<assert.h>
+	<malloc.h>
+	<stdio.h>
+	<string.h>
+
+1570093830 e:\code\c++\phonypacket\asserttools.h
+	"BytesTools.h"
+
+1570101481 source:e:\code\c++\phonypacket\asserttools.c
+	"AssertTools.h"
+
+1570027105 e:\code\c++\phonypacket\platformtools.h
+
+1570027655 source:e:\code\c++\phonypacket\platformtools.c
+	"PlatformTools.h"
+
+1570109482 e:\code\c++\phonypacket\sendpacket.h
+	"PacketInfo.h"
+
+1570170694 source:e:\code\c++\phonypacket\sendpacket.cpp
+	"SendPacket.h"
+	<libnet.h>
+
+1570170616 e:\code\c++\phonypacket\networktools.h
+	"BytesTools.h"
+
+1570170590 source:e:\code\c++\phonypacket\networktools.c
+	"NetworkTools.h"
+	"BytesTools.h"
+
