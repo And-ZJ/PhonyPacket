@@ -16,10 +16,14 @@ int isEqualBytes(const void *bytes1,unsigned int bytesLen1,const void *bytes2,un
     {
         return 0;
     }
-    assert(bytes1 != NULL);
-    assert(bytes2 != NULL);
     const unsigned char *b1 = (const unsigned char*)bytes1;
     const unsigned char *b2 = (const unsigned char*)bytes2;
+    if ( b1 == b2 ){
+        return 1;
+    }
+    if (b1 == NULL || b2 == NULL){
+        return 0;
+    }
     for (unsigned int i=0; i<bytesLen1; ++i)
     {
         if ((b1[i]&0xFF) != (b2[i]&0xFF))
