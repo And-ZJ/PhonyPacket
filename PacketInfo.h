@@ -16,14 +16,19 @@ struct AppData
     unsigned short payload_s;
 };
 
+#define PacketType_NO 0
+#define PacketType_TCP 6
+#define PacketType_UDP 17
+
 class PacketInfo
 {
 public:
     struct ether_header ethernetHead;
     struct iphdr ipHead;
     struct tcphdr tcpHead;
+    struct udphdr udpHead;
     struct AppData appData;
-
+    unsigned int packetType = PacketType_NO;
     ~PacketInfo(){
         if ( this->appData.payload != NULL){
             free(this->appData.payload );
@@ -51,7 +56,10 @@ void bytesToPacketInfo(const char* bytesHeadPtr, unsigned int len, PacketInfo *p
 PacketInfo *readableHexStreamToPacketInfo(const char *readableHexStream)
 ;
 
-PacketInfo *getPacketExample()
+PacketInfo *getTcpPacketExample()
+;
+
+PacketInfo *getUdpPacketExample()
 ;
 
 void displayPacketInfo(const PacketInfo *packet)

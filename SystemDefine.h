@@ -7,6 +7,7 @@
 #include <net/ethernet.h>
 #include <linux/ip.h>
 #include <linux/tcp.h>
+#include <linux/udp.h>
 #else
 
 #define ETH_ALEN 6
@@ -85,6 +86,13 @@ struct tcphdr
     unsigned short window;
     unsigned short check;
     unsigned short urg_ptr;
+};
+
+struct udphdr {
+	unsigned short 	source;
+	unsigned short 	dest;
+	unsigned short 	len;
+	unsigned short 	check;
 };
 
 #endif // __linux__

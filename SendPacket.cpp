@@ -23,28 +23,53 @@ int sendPacket(const char *device,PacketInfo *packet)
 
 int constructHandle(libnet_t *handle,PacketInfo *packet)
 {
-    libnet_ptag_t eth_tag, ip_tag, tcp_tag;
+    libnet_ptag_t eth_tag, ip_tag, tcp_tag, udp_tag;
 
-    tcp_tag = libnet_build_tcp(
-                  packet->tcpHead.source, // source port
-                  packet->tcpHead.dest, // dest port
-                  packet->tcpHead.seq, // seq
-                  packet->tcpHead.ack_seq, // ack
-                  composeTcpFlags(packet->tcpHead.cwr, packet->tcpHead.ece, packet->tcpHead.urg, packet->tcpHead.ack,
-                                  packet->tcpHead.psh, packet->tcpHead.rst, packet->tcpHead.syn, packet->tcpHead.fin), // control
-                  packet->tcpHead.window, // win
-                  0, // sum
-                  packet->tcpHead.urg_ptr, // urg
-                  LIBNET_TCP_H + packet->appData.payload_s, // len
-                  packet->appData.payload, // payload
-                  packet->appData.payload_s,// payload_s
-                  handle, // libnet_t *l
-                  0 // libnet_ptag_t ptag
-              );
-    if (tcp_tag == -1)
+    if (packet->ipHead.protocol == PacketType_TCP)
     {
-        return (-3);
+        tcp_tag = libnet_build_tcp(
+                      packet->tcpHead.source, // source port
+                      packet->tcpHead.dest, // dest port
+                      packet->tcpHead.seq, // seq
+                      packet->tcpHead.ack_seq, // ack
+                      composeTcpFlags(packet->tcpHead.cwr, packet->tcpHead.ece, packet->tcpHead.urg, packet->tcpHead.ack,
+                                      packet->tcpHead.psh, packet->tcpHead.rst, packet->tcpHead.syn, packet->tcpHead.fin), // control
+                      packet->tcpHead.window, // win
+                      0, // sum
+                      packet->tcpHead.urg_ptr, // urg
+                      LIBNET_TCP_H + packet->appData.payload_s, // len
+                      packet->appData.payload, // payload
+                      packet->appData.payload_s,// payload_s
+                      handle, // libnet_t *l
+                      0 // libnet_ptag_t ptag
+                  );
+        if (tcp_tag == -1)
+        {
+            return (-3);
+        }
     }
+    else if (packet->ipHead.protocol == PacketType_UDP)
+    {
+        udp_tag = libnet_build_udp(
+            packet->udpHead.source,
+            packet->udpHead.dest,
+            packet->udpHead.len, /* length */
+            0, /* 校验和，此时为0，表示由Libnet自动计算 */
+            packet->appData.payload, // payload
+            packet->appData.payload_s,// payload_s
+            handle, // libnet_t
+            0 // new
+        );
+        if (udp_tag == -1)
+        {
+            return (-3);
+        }
+    }
+    else
+    {
+        return -10;
+    }
+
 
     ip_tag = libnet_build_ipv4(
                  packet->ipHead.tot_len, /* IP协议块的总长*/
